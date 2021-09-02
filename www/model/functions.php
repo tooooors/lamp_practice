@@ -1,5 +1,9 @@
 <?php
 
+function h($str){
+  return htmlspecialchars($str, ENT_QUOTES, HTML_CHARACTER_SET);
+}
+
 function dd($var){
   var_dump($var);
   exit();
