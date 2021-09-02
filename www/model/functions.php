@@ -1,5 +1,5 @@
 <?php
-
+// $str str 引数
 function h($str){
   return htmlspecialchars($str, ENT_QUOTES, HTML_CHARACTER_SET);
 }
