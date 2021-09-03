@@ -13,7 +13,11 @@ function h($str){
 function entity_assoc_array($assoc_array){
   foreach($assoc_array as $key => $value){
     foreach($value as $keys => $values){
-      $assoc_array[$key][$keys] = h($values);
+      if(is_int($values)) {
+        $assoc_array[$key][$keys] = $values;
+      } else {
+        $assoc_array[$key][$keys] = h($values);
+      }
     }
   }
   return $assoc_array;
