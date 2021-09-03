@@ -1,8 +1,22 @@
 <?php
 
-// $str str 引数
+// 特殊文字をHTMLエンティティに変換する
+// @param str  $str 引数
+// @return str 変換後文字
+
+
 function h($str){
   return htmlspecialchars($str, ENT_QUOTES, HTML_CHARACTER_SET);
+}
+
+// 特殊文字をHTMLエンティティに変換する(2次元配列)
+function entity_assoc_array($assoc_array){
+  foreach($assoc_array as $key => $value){
+    foreach($value as $keys => $values){
+      $assoc_array[$key][$keys] = h($values);
+    }
+  }
+  return $assoc_array;
 }
 
 
