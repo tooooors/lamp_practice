@@ -1,7 +1,10 @@
 <?php
+
 // 特殊文字をHTMLエンティティに変換する
 // @param str  $str 引数
 // @return str 変換後文字
+
+
 function h($str){
   return htmlspecialchars($str, ENT_QUOTES, HTML_CHARACTER_SET);
 }
@@ -15,6 +18,7 @@ function entity_assoc_array($assoc_array){
   }
   return $assoc_array;
 }
+
 
 function dd($var){
   var_dump($var);
