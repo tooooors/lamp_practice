@@ -27,5 +27,9 @@ $items = get_open_items($db);
 // 特殊文字をHTMLエンティティに変換する(2次元配列)
 $items = entity_assoc_array($items);
 
+
+// トークン生成
+$token = get_csrf_token();
+
 // ビューの読み込み
 include_once VIEW_PATH . 'index_view.php';

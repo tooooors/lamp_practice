@@ -15,6 +15,14 @@ if(is_logined() === true){
   redirect_to(HOME_URL);
 }
 
+// トークンの照合
+$token = get_post('token');
+if(is_valid_csrf_token($token) === false){
+  // 不正なリクエストの場合ログインページへリダイレクト
+  set_error('不正なリクエストです');
+  redirect_to(LOGIN_URL);
+}
+
 // POSTデータの取得
 $name = get_post('name');
 $password = get_post('password');
@@ -35,5 +43,9 @@ try{
 }
 
 set_message('ユーザー登録が完了しました。');
+
+// トークンの再生成
+$token = get_csrf_token();
+
 login_as($db, $name, $password);
 redirect_to(HOME_URL);

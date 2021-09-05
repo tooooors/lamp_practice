@@ -30,5 +30,8 @@ $total_price = sum_carts($carts);
 // HTMLエンティティに変換する
 $carts = entity_assoc_array($carts);
 
+// トークン生成
+$token = get_csrf_token();
+
 // ビューの読み込み
 include_once VIEW_PATH . 'cart_view.php';

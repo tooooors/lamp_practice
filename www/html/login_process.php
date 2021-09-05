@@ -15,6 +15,14 @@ if(is_logined() === true){
   redirect_to(HOME_URL);
 }
 
+// トークンのチェック
+$token = get_post('token');
+if(is_valid_csrf_token($token) === false){
+  // 不正リクエストの場合ログインページへリダイレクト
+  set_error('不正なリクエストです');
+  redirect_to(LOGIN_URL);
+}
+
 // POSTデータの取得
 $name = get_post('name');
 $password = get_post('password');
@@ -31,6 +39,9 @@ if( $user === false){
 }
 
 set_message('ログインしました。');
+
+// トークンの再生成
+$token = get_csrf_token();
 
 // 管理ユーザーの場合商品管理ページへリダイレクト
 if ($user['type'] === USER_TYPE_ADMIN){
