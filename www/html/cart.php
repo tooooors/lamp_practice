@@ -30,5 +30,11 @@ $total_price = sum_carts($carts);
 // HTMLエンティティに変換する
 $carts = entity_assoc_array($carts);
 
+// トークン生成
+$token = get_csrf_token();
+
+// iframeでの読み込みを禁止する
+header("X-FRAME-OPTIONS: DENY");
+
 // ビューの読み込み
 include_once VIEW_PATH . 'cart_view.php';
