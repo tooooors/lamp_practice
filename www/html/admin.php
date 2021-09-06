@@ -37,5 +37,8 @@ $items = entity_assoc_array($items);
 // トークン生成
 $token = get_csrf_token();
 
+// iframeの読み込みを禁止する
+header("X-FRAME-OPTIONS: DENY");
+
 // ビューの読み込み
 include_once VIEW_PATH . '/admin_view.php';
