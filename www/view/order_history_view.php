@@ -29,8 +29,6 @@
                 <td>
                     <form method="get" action="order_detail.php">
                         <input type="hidden" name="order_id" value="<?php print $read['order_id']; ?>">
-                        <input type="hidden" name="created" value="<?php print $read['created']; ?>">
-                        <input type="hidden" name="sum_price" value="<?php print $read['SUM(price)']; ?>">
                         <input class="btn btn-secondary" type="submit" value="購入明細表示">
                     </form>
                 </td>

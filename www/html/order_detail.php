@@ -23,8 +23,6 @@ if(is_logined() === false){
 
 // GETデータの取得
 $order_id = (int)get_get('order_id');
-$created = get_get('created');
-$sum_price = get_get('sum_price');
 
 // PDOの取得
 $db = get_db_connect();
@@ -35,6 +33,11 @@ $user = get_login_user($db);
 $detail = get_order_detail($db, $user['type'], USER_TYPE_ADMIN, $user['user_id'], $order_id);
 // HTMLエンティティに変換
 $detail = entity_assoc_array($detail);
+
+// 購入日時
+$created = $detail[0]['created'];
+// 合計金額
+$sum_price = get_sum_price($detail);
 
 // iframeでの読み込みを禁止する
 header("X-FRAME-OPTIONS: DENY");

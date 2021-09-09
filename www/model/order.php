@@ -33,7 +33,8 @@ function get_order_detail($db, $user_type, $admin_type, $user_id, $order_id) {
         SELECT
             items.name,
             order_details.price,
-            order_details.amount
+            order_details.amount,
+            order_history.created
         FROM
             order_details
         INNER JOIN
@@ -55,4 +56,11 @@ function get_order_detail($db, $user_type, $admin_type, $user_id, $order_id) {
             order_details.order_id = ?
         ";
     return fetch_all_query($db, $sql, $params);
+}
+
+function get_sum_price($array) {
+    foreach ($array as $price) {
+        $sum_price += $price['price'];
+    }
+    return $sum_price;
 }
