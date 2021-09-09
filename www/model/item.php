@@ -148,6 +148,28 @@ function delete_item($db, $item_id){
   return execute_query($db, $sql, $params);
 }
 
+function get_popular_items($db){
+  $sql = "
+    SELECT
+      items.name,
+      items.image,
+      items.price,
+      items.stock
+    FROM
+      items
+    INNER JOIN
+      order_details
+    ON
+      order_details.item_id = items.item_id
+    GROUP BY
+      order_details.item_id
+    ORDER BY
+      SUM(order_details.amount) DESC
+    LIMIT 3
+  ";
+  return fetch_all_query($db, $sql);
+}
+
 
 // 非DB
 
