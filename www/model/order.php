@@ -59,8 +59,8 @@ function get_order_detail($db, $user_type, $admin_type, $user_id, $order_id) {
 }
 
 function get_sum_price($array) {
-    foreach ($array as $price) {
-        $sum_price += $price['price'];
+    foreach ($array as $read) {
+        $sum_price += $read['price'];
     }
     return $sum_price;
 }
