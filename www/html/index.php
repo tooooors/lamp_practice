@@ -27,6 +27,10 @@ $items = get_open_items($db);
 // 特殊文字をHTMLエンティティに変換する(2次元配列)
 $items = entity_assoc_array($items);
 
+// 人気ランキング用の商品データを取得
+$popular_items = get_popular_items($db);
+// 特殊文字をHTMLエンティティに変換する(2次元配列)
+$popular_items = entity_assoc_array($popular_items);
 
 // トークン生成
 $token = get_csrf_token();
